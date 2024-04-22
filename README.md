@@ -1,3 +1,20 @@
+# Excerpt projection not included in OpenAPI
+This is a reproducer project demonstrating that the excerpt projection does not get included in the OpenAPI spec.
+
+The behaviour that should be documented is described here: 
+https://docs.spring.io/spring-data/rest/reference/projections-excerpts.html#projections-excerpts.excerpts
+
+Excerpt from page:
+> For example, you can alter the PersonRepository as follows:
+```
+@RepositoryRestResource(excerptProjection = NoAddresses.class)
+interface PersonRepository extends CrudRepository<Person, Long> {}
+```
+> The preceding example directs Spring Data REST to use the NoAddresses projection when embedding Person resources into collections or related resources.
+
+Although this functionality works as advertised, the projection does not get detected by Spring Doc.
+
+## Examples
 Current Spring doc for response for BookStore (only relevant part):
 ```
       "EntityModelBookStoreEntity": {
